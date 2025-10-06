@@ -1,4 +1,4 @@
-# Clinic Multi-Doctor Scheduler Mini Project-
+# Clinic Multi-Doctor Scheduler Mini Project
 
 Welcome to **Clinic Multi-Doctor Scheduler**!!<br>
 
