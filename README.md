@@ -1,4 +1,4 @@
-# Clinic-Multi-Doctor-Scheduler-Mini-Project-
+# Clinic Multi-Doctor Scheduler Mini Project-
 
 Welcome to **Clinic Multi-Doctor Scheduler**!!<br>
 
@@ -11,4 +11,4 @@ It simulates a real clinic’s scheduling system using **in-memory data storage*
 <br>
 This project is the **Phase 1 implementation** — a functional CLI version before integrating a **MySQL database** in the next phase.
 
-## Author : Mannat Bansal 
+### Author : Mannat Bansal 
