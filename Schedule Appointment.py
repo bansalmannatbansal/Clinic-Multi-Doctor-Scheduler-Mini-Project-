@@ -216,10 +216,8 @@ def cancel():
         print(f"\nNo Appointment under {patientname} found!")
 
 
-if __name__ == "__main__":
-    print("Name: Mannat Bansal")
-    print("Enrollment number: 2502140040")
-    
+if __name__ == "__main__":    
+    print("Welcome to Clinic Appointment Scheduler\nMay us know your identity")
     print("\n1. Doctor\n2. Patient")
     
     user = int(input("Enter your Identity[1 or 2]: ").strip())
