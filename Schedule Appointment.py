@@ -1,11 +1,13 @@
 import random
+
 Username = " "
 Password = " "
+
 def userlogin():
     Username = "mannatbansal"
     Password = "man324ban"
     print("-------------LOGIN-------------")
-    i= 4
+    i = 4
     while i > 0:
         username = input("Enter Username:")
         password = input("Enter Password:")
@@ -23,14 +25,15 @@ def userlogin():
             print("Too Many Attempts.... Try Again Later")
             exit()
 
+
 def doclogin():
     Username = "doctor"
     Password = "12345"
     print("-------------LOGIN-------------")
-    i= 4
+    i = 4
     while i > 0:
-        username = input("Enter Username:").strip( )
-        password = input("Enter Password:").strip( )
+        username = input("Enter Username:").strip()
+        password = input("Enter Password:").strip()
         if username == Username and password == Password:
             print("\nLogin Successful 🎉")
             break
@@ -51,13 +54,16 @@ def show_menu_patient():
     print("1. Book Appointment")
     print("2. Modify Appointment")
     print("3. Cancel Appointment")
+    print("4. Exit")
+
 
 def show_menu_doctor():
     print("\n-------------- Doctor Menu -------------\n")
     print("1. View Appointment")
     print("2. Search Appointment")
+    print("3. Exit")
 
-def slots(start_time = "10:00", slot_duration = 15, break_duration = 5, slot_count = 6):
+def slots(start_time="10:00", slot_duration=15, break_duration=5, slot_count=6):
     slots_available = []
     # spliting hours and minutes
     hours, minutes = start_time.split(":")
@@ -66,15 +72,16 @@ def slots(start_time = "10:00", slot_duration = 15, break_duration = 5, slot_cou
 
     total_duration = slot_duration + break_duration
 
-    for i in range(slot_count+1):
+    for i in range(slot_count + 1):
         slots_available.append(f"{hours:02d}:{minutes:02d}")
 
-        #adding timegap
+        # adding timegap
         minutes += total_duration
         if minutes >= 60:
             hours += 1
             minutes = minutes % 60
     return slots_available
+
 
 doctors = {
     "Dr. A": {"slots": slots(), "bookings": {}},
@@ -82,10 +89,12 @@ doctors = {
     "Dr. C": {"slots": slots(), "bookings": {}},
 }
 
-def bookingdoc(patientname):
+
+def bookingdoc():
     print("\n--------------BOOK YOUR APPOINTMENT-------------\n")
     print("(Duration of Appointment is 15 Minutes)\n")
 
+    patientname = input("Enter Patient's name:").strip()
     for doc, data in doctors.items():
         print(f"{doc}: {data['slots']}")
     print()
@@ -99,7 +108,7 @@ def bookingdoc(patientname):
         available_slots = doctors[doc_key]["slots"]
         booking = input("Enter time slot(HH:MM): ")
         if booking in available_slots and booking not in doctors[doc_key]["bookings"]:
-            doctors[doc_key]["bookings"][booking] = patientname
+            doctors[doc_key]["bookings"][booking] = patientname    #saving this data
             print("\nSlot Confirmed")
             print(f"Assigned Doctor : {doc_key}")
             print(f"Slot : {booking}")
@@ -144,9 +153,9 @@ def view():
 
 def modify():
     print("\n-------------- Modify Appointment --------------")
-    nameofpatient = input("Enter your name: ").strip()
+    nameofpatient = input("Enter patient's name: ").strip()
     found = False
-    for doctorname,data in doctors.items():
+    for doctorname, data in doctors.items():
         for slot_time, patient in list(data["bookings"].items()):
             if patient.lower() == nameofpatient.lower():
                 found = True
@@ -157,8 +166,8 @@ def modify():
                 modify = input("Do you want to modify your appointment(Yes/No) : ")
                 if modify.lower() == "yes":
                     available = [
-                    slot for slot in data["slots"]
-                    if slot not in data["bookings"]
+                        slot for slot in data["slots"]
+                        if slot not in data["bookings"]
                     ]
                     print(f"Available Slots for {doctorname}: {available}")
                     if not available:
@@ -191,14 +200,14 @@ def search():
             print(f"Slot: {searchtime}")
             print(f"Patient: {data['bookings'][searchtime]}")
     if not found_app:
-       print("\nNo Appointment Found!")
+        print("\nNo Appointment Found!")
 
 
 def cancel():
-    patientname = input("Enter your name:").strip()
+    patientname = input("Enter patient's name:").strip()
     foundname = False
-    for docname,data in doctors.items():
-        for slot_time,patient in list(data["bookings"].items()):
+    for docname, data in doctors.items():
+        for slot_time, patient in list(data["bookings"].items()):
             if patientname.lower() == patient.lower():
                 foundname = True
                 print("Current Appointment: ")
@@ -216,32 +225,40 @@ def cancel():
         print(f"\nNo Appointment under {patientname} found!")
 
 
-if __name__ == "__main__":    
+def exitprog():
+    print("Exiting....")
+    exit()
+
+if __name__ == "__main__":
     print("Welcome to Clinic Appointment Scheduler\nMay us know your identity")
     print("\n1. Doctor\n2. Patient")
-    
     user = int(input("Enter your Identity[1 or 2]: ").strip())
     if user == 1:
-        doclogin()
-        show_menu_doctor()
-        need = int(input("Enter the number of what you want from menu: "))  # what does patient wants from menu
-        if need == 1:
-            view()
-        if need == 2:
-            search()
-
+       doclogin()
+       while True:
+            show_menu_doctor()
+            need = int(input("Enter the number of what you want from menu: "))  # what does patient wants from menu
+            if need == 1:
+                view()
+            elif need == 2:
+                search()
+            elif need == 3:
+                exitprog()
 
     if user == 2:
         userlogin()
-        patientname = input("Enter your name:").strip()
-        show_menu_patient()
-        need = int(input("Enter the number of what you want from menu: ")) # what does patient wants from menu
-        if need == 1:
-            bookingdoc(patientname)
-        if need == 2:
-            modify()
-        if need == 3:
-            cancel()
+        print("---------------------------------------------------")
+        while True:
+            show_menu_patient()
+            need = int(input("Enter the number of what you want from menu: "))  # what does patient wants from menu
+            if need == 1:
+                bookingdoc()
+            elif need == 2:
+                modify()
+            elif need == 3:
+                cancel()
+            elif need == 4:
+                exitprog()
 
 
 
