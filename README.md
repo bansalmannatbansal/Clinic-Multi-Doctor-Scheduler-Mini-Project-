@@ -10,5 +10,14 @@ The **Clinic Multi-Doctor Scheduler** is a Python-based command-line application
 It simulates a real clinic’s scheduling system using **in-memory data storage**, with each doctor having separate time slots.
 <br>
 This project is the **Phase 1 implementation** — a functional CLI version before integrating a **MySQL database** in the next phase.
+<hr>
+
+## 🚀 Features
+    - User registration & **login**
+    - **Book**, **edit**, and **cancel** appointments 🗓️
+    - **Search** & **view** appointments 🔍
+<hr>
+
+
 
 ### Author : Mannat Bansal 
