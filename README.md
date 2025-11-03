@@ -13,9 +13,9 @@ This project is the **Phase 1 implementation** — a functional CLI version befo
 <hr>
 
 ## 🚀 Features
-    - User registration & **login**
-    - **Book**, **edit**, and **cancel** appointments 🗓️
-    - **Search** & **view** appointments 🔍
+   - User registration & **login**
+   - **Book**, **edit**, and **cancel** appointments 🗓️
+   - **Search** & **view** appointments 🔍
 <hr>
 
 
